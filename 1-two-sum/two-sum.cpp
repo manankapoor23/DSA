@@ -7,15 +7,15 @@ public:
         //     index.push_back(nums.size()-1);
         //     }
         for(int i =0;i<nums.size();i++){
-            for(int j =i+1;j<nums.size();j++){
-                if(nums[i]+nums[j]==target){
+            for(int j =1+i;j<nums.size();j++){
+                if((nums[i]+nums[j]==target)){
                     index.push_back(i);
                     index.push_back(j);
+                    return index;
                 }
-            
             }
         }
         return index;
-       
+        
     }
 };
