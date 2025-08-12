@@ -5,7 +5,6 @@ public:
         int e = nums.size()-1;
         int mid = s+(e-s)/2;
         int ans;
-        bool flag = false;
         while(s<=e){
             mid = s+(e-s)/2;
             if(nums[mid]<target){
@@ -15,15 +14,9 @@ public:
                 e=mid-1;
             }
             if(nums[mid]==target){
-                flag = true;
                 return mid;
             }
         }
-        if(flag==false){
             return -1;
         }
-        else{
-            return mid;
-        }
-    }
 };
