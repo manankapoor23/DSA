@@ -1,10 +1,13 @@
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+
         int n = nums.size();
 
-        // Step 1: Place numbers at correct positions
-        for (int i = 0; i < n; ) {
+        // Place each number in its correct index
+        for (int i = 0; i < n;) {
             int correctIndex = nums[i] - 1;
             if (nums[i] != nums[correctIndex]) {
                 swap(nums[i], nums[correctIndex]);
@@ -13,8 +16,10 @@ public:
             }
         }
 
-        // Step 2: Collect missing numbers
+        // Collect missing numbers
         vector<int> result;
+        result.reserve(n); // avoids reallocations
+
         for (int i = 0; i < n; i++) {
             if (nums[i] != i + 1) {
                 result.push_back(i + 1);
