@@ -18,6 +18,6 @@ public:
             }
 
         }
-        return maxArea;
+        return (int)maxArea;
     }
 };
