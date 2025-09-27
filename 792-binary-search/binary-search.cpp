@@ -3,20 +3,20 @@ public:
     int search(vector<int>& nums, int target) {
         int s = 0 ;
         int e = nums.size()-1;
-        int mid = s+(e-s)/2;
-        int ans;
+        int mid;
         while(s<=e){
             mid = s+(e-s)/2;
-            if(nums[mid]<target){
-                s=mid+1;
-            }
-            if(nums[mid]>target){
-                e=mid-1;
-            }
-            if(nums[mid]==target){
+            if(target==nums[mid]){
                 return mid;
             }
+            if(target<nums[mid]){
+                e=mid-1;
+            }
+            else if(target>nums[mid]){
+                s=mid+1;
+            }
         }
-            return -1;
-        }
+        return -1;
+        
+    }
 };
