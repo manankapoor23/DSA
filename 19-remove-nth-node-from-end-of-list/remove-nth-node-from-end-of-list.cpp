@@ -16,12 +16,13 @@ public:
         }
 
         int len =0;
-        ListNode* x = head ;
+        ListNode* x = head ; // start a pointer at head of the list 
         while(x!=NULL){
             len++;
-            x = x->next;
+            x = x->next; // calculate the number of nodes 
         }
         if(n==len){
+            // means deleting head only 
             ListNode* todel = head ;
             head = head->next;
             delete todel;
@@ -29,10 +30,11 @@ public:
         }
         ListNode* temp = head ;
         for(int i =1;i<len-n;i++){
+            // i stops at i<3 which is after 2 times temp=temp->next
             temp=temp->next; // find just before to deletion
         }
         ListNode* todelete = temp->next;
-        temp->next = temp->next->next;
+        temp->next = todelete->next;
         delete todelete;
 
         return head; 
