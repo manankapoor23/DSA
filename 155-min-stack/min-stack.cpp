@@ -1,6 +1,5 @@
 class MinStack {
 public:
-    int minimum = INT_MAX;
     stack<int> s;
     stack<int> min;
     MinStack() {
@@ -10,11 +9,12 @@ public:
     void push(int val) {
         s.push(val);
         if(min.empty()||val<=min.top()){
-            min.push(val);
+            min.push(val); // this checks if min is empty or the value is less than the minimumest , then push it warna fir top wala wapas push kardo so that number of elements maintain rahe 
         }
         else{
-            min.push(min.top());
+            min.push(min.top()); // for every value which is greater we push the top value again 
         }
+        
     }
     
     void pop() {
@@ -25,7 +25,6 @@ public:
     
     int top() {
         return s.top();
-        
         
     }
     
