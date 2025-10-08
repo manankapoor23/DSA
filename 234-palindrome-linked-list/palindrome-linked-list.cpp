@@ -12,7 +12,7 @@ class Solution {
 public:
     bool isPalindrome(ListNode* head) {
         bool ans = true;
-        if (!head || !head->next) return true;
+        if (!head->next) return true;
         ListNode *slow = head;
         stack<int> st;
         while(slow!=NULL){
