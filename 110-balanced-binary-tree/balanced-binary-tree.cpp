@@ -19,17 +19,30 @@ class Solution {
             return h;
         }
 public:
-    bool isBalanced(TreeNode* root) {
+    pair<bool,int> isBalancedfast(TreeNode* root) {
         if(root==NULL){
-            return true ;
+            pair<bool,int> p = make_pair(true,0);
+            return p ;
         }
-        bool left = isBalanced(root->left);
-        bool right = isBalanced(root->right);
-        bool heighter = abs(height(root->left)-height(root->right))<=1;
-        return(left&&right&&heighter);
+        pair<int,int> left = isBalancedfast(root->left);
+        pair<int,int> right = isBalancedfast(root->right);
         
-   
+        bool leftans = left.first;
+        bool rightans = right.first;
+        bool heighter = abs(left.second-right.second)<=1;
+        pair<bool,int> ans;
+        ans.second =max(left.second,right.second)+1;
+        if(leftans&&rightans&&heighter){
+            ans.first=true;
+        }
+        else{
+            ans.first=false;
+        }
+        return ans;
+    }
+public:
+    bool isBalanced(TreeNode*root){
+        return isBalancedfast(root).first;
 
-        
     }
 };
