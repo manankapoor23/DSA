@@ -27,7 +27,9 @@ public:
         if(left&&right&&value){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
         
     }
 };
