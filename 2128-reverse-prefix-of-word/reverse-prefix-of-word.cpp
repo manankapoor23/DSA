@@ -1,24 +1,29 @@
 class Solution {
 public:
     string reversePrefix(string word, char ch) {
+        stack<char> before ;
         string empty = "";
-        int index = 0;
-        for(int i =0;i<word.size();i++){
-            if(word[i]==ch){
-                index = i ;
-                break;
-            }
+        int i =0;
+        while(i<word.size() && word[i]!=ch){
+            before.push(word[i]);
+            i++;
         }
-        if(index ==-1){
+        if(i==word.size()){
             return word;
         }
-
-        for(int i=index;i>=0;i--){
-            empty = empty+word[i];
+        before.push(word[i]);
+        while(!before.empty()){
+            empty+=before.top();
+            before.pop();
         }
-        for(int i =index+1;i<word.size();i++){
-            empty=empty+word[i];
+        i++;
+        while(i<word.size()){
+            empty+=word[i];
+            i++;
         }
         return empty;
+        
+
+        
     }
 };
