@@ -1,18 +1,20 @@
 class Solution {
+private:
+    void reverse(vector<char> &str,int i , int j){
+        if(i>j){
+            return;
+        }
+        swap(str[i],str[j]);
+        i++;
+        j--;
+        reverse(str,i,j);
+        }
 public:
     void reverseString(vector<char>& s) {
-        int n = s.size();
-        char stak[n];
-        int top =0;
+        // recursion 
+        reverse(s,0,s.size()-1);
 
-        for(int i =0;i<n;i++){
-            stak[top]=s[i];
-            top++;
-        }
 
-        for(int i =0;i<n;i++){
-            s[i]=stak[--top];
-        }
         
     }
 };
