@@ -11,28 +11,28 @@
  */
 class Solution {
 private:
-    void inorder(TreeNode* root , vector<int> &ans){
+    void inorder(TreeNode* root , vector<TreeNode*> &ans){
         if(root==NULL){
             return;
         }
         inorder(root->left,ans);
-        ans.push_back(root->val);
+        ans.push_back(root);
         inorder(root->right,ans);
     }
 private:
-    TreeNode* InorderToBst(int s , int e , vector<int> ans ){
+    TreeNode* InorderToBst(int s , int e , vector<TreeNode*> ans ){
         if(s>e){
             return NULL;
         }
         int mid = s+(e-s)/2;
-        TreeNode* root = new TreeNode(ans[mid]);
-        root->left = InorderToBst(s,mid-1,ans);
-        root->right = InorderToBst(mid+1,e,ans);
-        return root;
+        ans[mid]->left = InorderToBst(s,mid-1,ans);
+
+        ans[mid]->right = InorderToBst(mid+1,e,ans);
+        return ans[mid];
     }
 public:
     TreeNode* balanceBST(TreeNode* root) {
-        vector<int> ans ;
+        vector<TreeNode*> ans ;
         inorder(root,ans);
         // now our vector has the sorted 
         // find the middle value from the inorder 
