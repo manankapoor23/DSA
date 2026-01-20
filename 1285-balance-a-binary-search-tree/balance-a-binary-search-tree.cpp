@@ -10,7 +10,8 @@
  * };
  */
 class Solution {
-private:
+public:
+
     void inorder(TreeNode* root , vector<TreeNode*> &ans){
         if(!root){
             return;
@@ -19,17 +20,17 @@ private:
         ans.push_back(root);
         inorder(root->right,ans);
     }
-private:
+
     TreeNode* InorderToBst(vector<TreeNode*> ans ,int s , int e ){
         if(s>e){
             return nullptr;
         }
-        int mid = s+(e-s)/2;
+        int mid = (s+e)/2;
         ans[mid]->left = InorderToBst(ans,s,mid-1);
         ans[mid]->right = InorderToBst(ans,mid+1,e);
         return ans[mid];
     }
-public:
+
     TreeNode* balanceBST(TreeNode* root) {
         vector<TreeNode*> ans ;
         inorder(root,ans);
