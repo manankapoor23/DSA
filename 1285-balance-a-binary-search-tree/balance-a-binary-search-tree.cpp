@@ -21,7 +21,7 @@ public:
         inorder(root->right,ans);
     }
 
-    TreeNode* InorderToBst(vector<TreeNode*> ans ,int s , int e ){
+    TreeNode* InorderToBst(vector<TreeNode*> &ans ,int s , int e ){
         if(s>e){
             return nullptr;
         }
