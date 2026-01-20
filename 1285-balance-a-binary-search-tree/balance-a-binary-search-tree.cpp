@@ -22,11 +22,10 @@ private:
 private:
     TreeNode* InorderToBst(int s , int e , vector<TreeNode*> ans ){
         if(s>e){
-            return NULL;
+            return nullptr;
         }
         int mid = s+(e-s)/2;
         ans[mid]->left = InorderToBst(s,mid-1,ans);
-
         ans[mid]->right = InorderToBst(mid+1,e,ans);
         return ans[mid];
     }
