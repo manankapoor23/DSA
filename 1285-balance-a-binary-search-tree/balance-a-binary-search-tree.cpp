@@ -20,13 +20,13 @@ private:
         inorder(root->right,ans);
     }
 private:
-    TreeNode* InorderToBst(int s , int e , vector<TreeNode*> ans ){
+    TreeNode* InorderToBst(vector<TreeNode*> ans ,int s , int e ){
         if(s>e){
             return nullptr;
         }
         int mid = s+(e-s)/2;
-        ans[mid]->left = InorderToBst(s,mid-1,ans);
-        ans[mid]->right = InorderToBst(mid+1,e,ans);
+        ans[mid]->left = InorderToBst(ans,s,mid-1);
+        ans[mid]->right = InorderToBst(ans,mid+1,e);
         return ans[mid];
     }
 public:
@@ -36,9 +36,7 @@ public:
         // now our vector has the sorted 
         // find the middle value from the inorder 
         // make a new root with that and assign the middle value to it and then recursively call root->left to be inorderbst of left part of mid which is s to mid-1 , with carrying the ans array and similarly for the right part 
-        return InorderToBst(0,ans.size()-1,ans);
-        
-
+        return InorderToBst(ans,0,ans.size()-1);
         
     }
 };
