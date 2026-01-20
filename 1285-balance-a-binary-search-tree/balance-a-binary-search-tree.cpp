@@ -33,9 +33,6 @@ public:
     TreeNode* balanceBST(TreeNode* root) {
         vector<TreeNode*> ans ;
         inorder(root,ans);
-        // now our vector has the sorted 
-        // find the middle value from the inorder 
-        // make a new root with that and assign the middle value to it and then recursively call root->left to be inorderbst of left part of mid which is s to mid-1 , with carrying the ans array and similarly for the right part 
         return InorderToBst(ans,0,ans.size()-1);
         
     }
