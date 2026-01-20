@@ -12,7 +12,7 @@
 class Solution {
 private:
     void inorder(TreeNode* root , vector<TreeNode*> &ans){
-        if(root==NULL){
+        if(!root){
             return;
         }
         inorder(root->left,ans);
