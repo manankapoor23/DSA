@@ -2,23 +2,31 @@ class Solution {
 public:
     bool isValid(string s) {
         stack<char> st;
-
         for(char c:s){
-            if(c=='('||c=='['||c=='{'){
+            if(c=='['||c=='{'||c=='('){
                 st.push(c);
             }
             else{
                 if(st.empty()){
+                    // matlab tumhare closing ke liye waha koi 
+                    // opening bracket nai pada hai
                     return false;
                 }
                 char top = st.top();
                 st.pop();
-                if((c==')'&&top!='(')||(c==']'&&top!='[')||(c=='}'&&top!='{')){
+                if(c==')'&& top!= '(' || c==']'&& top != '[' || c=='}'&& top != '{'){
                     return false;
                 }
             }
         }
-        return st.empty();
-        
+        if(st.empty()){
+            return true;
+        }else{
+            return false;
+        }
+
+
+
+
     }
 };
