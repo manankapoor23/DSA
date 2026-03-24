@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> constructProductMatrix(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        vector<vector<int>> p(n,vector<int>(m,1));
+
+        long long mat_prod =1;
+        for(int i =0;i<n;i++){
+            for(int j=0;j<m;j++){
+                p[i][j]=mat_prod;
+                mat_prod = (mat_prod * grid[i][j])%12345;
+            }
+        }
+        long long mat_prod2 = 1;
+        for(int i =n-1;i>=0;i--){
+            for(int j =m-1;j>=0;j--){
+                p[i][j]= (p[i][j]*mat_prod2)%12345;
+                mat_prod2 = (mat_prod2 * grid[i][j])%12345;
+            }
+        }
+        return p;
+        
+    }
+};
