@@ -12,11 +12,11 @@ public:
         
         vector<int> ans;
         // element not found in the array hence returing -1
-        if(!(mp.find(x)!=mp.end())){
+        if((mp.find(x)==mp.end())){
            vector<int> ret(q,-1);
            return ret;
         }
-        vector<int> pos = mp[x];
+        vector<int> pos = mp[x]; // gives 0,2 , pos size = 2 
         // now we have mp.first as the element , and mp.second as its occurences 
         for(int i =0;i<q;i++){
             if(queries[i]>pos.size()){
