@@ -1,0 +1,8 @@
+# Compiled binaries
+*.o
+*.out
+*.exe
+a.out
+
+# Editor/OS cruft
+.DS_Store
