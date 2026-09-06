@@ -1,25 +1,22 @@
 class Solution {
 public:
-    int solve(vector<int> &nums, int n){
-        // here n is the size 
-        if(n==0){
-            return 0;
-        }
-        vector<int> ans;
-        ans.push_back(nums[0]);
+    int solve(vector<int> &nums){
+        vector<int> dp(nums.size(),1);
         for(int i =1;i<nums.size();i++){
-            if(nums[i]>ans.back()){
-                ans.push_back(nums[i]);
-            }
-            else{
-                // put lower bound wali position pe
-                int index = lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
-                ans[index]=nums[i];
+            for(int prev =0;prev<i;prev++){
+                if(nums[i]>nums[prev]){
+                    dp[i]=max(dp[prev]+1,dp[i]);
+                }
             }
         }
-        return ans.size();
+        sort(dp.begin(),dp.end());
+        return dp[nums.size()-1];
+        
+
     }
     int lengthOfLIS(vector<int>& nums) {
-        return solve(nums,nums.size());
+        int ans = solve(nums);
+        return ans;
+        
     }
 };
