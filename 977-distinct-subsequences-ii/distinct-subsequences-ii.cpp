@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int distinctSubseqII(string s) {
+        const long long MOD = 1e9+7;
+        int n = s.size();
+        vector<long long> dp(n+1,0);
+        vector<int> last(26,-1);
+
+        dp[0]=1;
+        for(int i =0;i<n;i++){
+            int c = s[i]-'a'; // ascii code of current char
+
+            dp[i+1]=(2*dp[i])%MOD;
+            if(last[c]!=-1){
+                dp[i+1]=(dp[i + 1] - dp[last[c]]+MOD)%MOD;
+            }
+            last[c]=i;
+        }
+        return (dp[n]-1+MOD)%MOD;
+        
+    }
+};
