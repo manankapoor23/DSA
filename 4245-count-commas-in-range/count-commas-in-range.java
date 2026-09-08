@@ -3,12 +3,10 @@ class Solution {
         if(n<=999){
             return 0;
         }
-        if(n<=9999){
+        if(n<=100000){
             return n-999;
         }
-        if(n<=100000){
-            return (9001+n-10000);
-        }
+
         return 0;
     }
 
